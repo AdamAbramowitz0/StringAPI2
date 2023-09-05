@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <link rel="stylesheet" href="{{ url_for('static', filename='styles/MyStyle.css') }}">
+</head>
+
+<body>
+
+    <p>SIGN UP (But first, please read <a href="/setupguide">the intro guide/about us page</a>)</p>
+  <form action = "/validate" method = "POST"> <!--https://3.138.172.218/validate-->
+        <input name="name" value="please enter the name of your company"><br>
+        <input name="email" value="please enter your email"><br>
+        <input name="password" value="please enter your password"><br>
+        <input type="submit">
+    </form>
+
+    <p><br>SIGN IN</p>
+  <form action = "/login" method = "POST"><!--https://3.138.172.218/login-->
+
+        <input name="email" value="please enter your email"><br>
+        <input name="password" value="please enter your password"><br>
+        <input type="submit">
+    </form>
+   <!-- <p>What is this? This is a web api to help your company capitalize on referals. For example, lets say that you have an app on the app store
+    that tracks how many steps you have taken, while also tracking your heart rate if you are a premium member. The premium membership is one dollar
+    per month. You can give people one month free for every person that they give a code to (or whatever configuration that you choose). We also
+    reward "good" referals, where if you refer sombody that refers somebody else, you get rewarded.</p>-->
+
+<p><br><a href="https://stringapi.net/customersupport">customer support</a></p>
+
+</body>
+</html>

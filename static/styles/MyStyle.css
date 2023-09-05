@@ -1,0 +1,46 @@
+h1{
+text-align:center;
+}
+h2{
+text-align:center;
+}
+h3{
+text-align:center;
+}
+
+
+form {
+    color: #ffc180;
+    text-align: center;
+    font-family: Courier New, monospace;
+    border:none
+}
+
+
+input{
+margin: 5px;
+width: 20%;
+font-family: Courier New, monospace;
+padding: 20px,20px;
+border:none
+background-color: #ffc180;
+
+
+}
+input [type=input]{
+border:none
+color: #ffc180;
+
+
+}
+body {
+    background-image: url("Untitleddesign.png");
+    background-repeat: repeat;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 100;
+    font-family: Courier New, monospace;
+    color: RGBA(115, 115, 115, 1);
+}
+
+

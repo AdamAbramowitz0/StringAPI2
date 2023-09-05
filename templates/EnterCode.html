@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/MyStyle.css') }}">
+</head>
+<body>
+    <meta charset="UTF-8">
+    <title>ENTER CODE {{code}} </title>
+    <form action = "/Validate" method = "GET">
+        <input name="Code" value="Code">
+        <input type = "hidden" name="Passcode" value={{passcode}}>
+        <input type = "hidden" name="SignUsername" value={{number}}>
+        <input type="submit">
+
+
+    </form>
+
+
+
+</body>
+</html>

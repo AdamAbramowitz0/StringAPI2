@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <link rel="stylesheet" href="{{ url_for('static', filename='styles/MyStyle.css') }}">
+</head>
+<body>
+<h1>Welecome to the intro guide/about page</h1>
+
+<p> to use StringAPI:
+
+   Go to StringAPI.net<br><br>
+   Sign up<br><br>
+   Check your email in the same browser session<br><br>
+   Go to the link in the email<br><br>
+   If you were given a code by a friend, type it in to the box, otherwise, leave it as 0<br><br>
+   Click Checkout<br><br>
+   Enter in your payment details (this is done securly through Stripe)<br><br>
+   Now go to manage billing and then return to the homepage<br><br>
+   Login<br><br>
+Create an instance by entering in the name of your company and the name of the instance
+Now you can view the api key of this instance by going to the link keys and codes
+Now we are going to start using the api
+<br><br><br>
+First add in your user base to our backend through this command:
+<br><br>
+url = "https://stringapi.net/addUser"
+data = {"apiKey": "(your api key)", "instanceName": "(the name of the instance)", "userName": “(name of the user you will add (can also be a number, but then change the type into an int),"code": (0, unless they were referred to the app by somebody)}
+z=requests.post(url,data=data)
+<br><br>
+If the response is "ACTION COMPLETE!" then the user was sucessfully added. If the response is "faulty apikey or instance name" then they were not due to the api key and/or instnace name being invalid.
+<br><br>
+Now you will want to display everybodies codes (that they will share with friends) on the homepage or an easy to access place on your app:
+<br><br>
+url1 = "https://stringapi.net/getCode"
+ data1 = {"apiKey": "(your api key)", "instanceName": "(the name of the instance)", "userName": “(the name of the user)”}
+ userCode = requests.post(url1, data=data1).text
+<br><br>
+If you get a response with a number, that is the users code. If the response is "faulty apikey or instance name", then you have entered in an invalid api key or instance name.
+<br><br>
+Now lets setup the ability for you to add users who have entered a code.
+<br><br>
+
+
+url = "https://stringapi.net/addUser"
+data = {"apiKey": "(your api key)", "instanceName": "(the name of the instance)", "userName": “(name of the user you will add (can also be a number, but then change the type into an int),"code": (the code the user entered)}
+z=requests.post(url,data=data)
+<br><br>
+This will return an error if the code is not valid, in which case you should prompt the user to re-enter their code and make the request again.
+<br><br>
+Now lets see who refered the user
+<br><br>
+url2 = "https://stringapi.net/getReferrers"
+data3 = {"apiKey": "(your api key)", "instanceName": "(your instance name)", "name": “(Name of new user just added)”}
+name1=requests.post(url2, data=data3).text
+<br><br>
+#only if you also want to reward the person who referred the person who referred the new user.
+url20 = "http://stringapi.net/getReferrers"
+data30 = {"apiKey": "(your api key)", "instanceName": "(your instancename)", "name": name1}
+name2 = requests.post(url20, data=data30).text
+<br><br>
+Now you can reward these two users.
+<br><br>
+Also, if you want to reward the person who was referred, then:
+    <br><br>
+if name1 != "error":
+	#Reward the user
+<br><br><br>
+    <strong>You are now all setup!</strong>
+
+</p><br>
+<h3>What is StringAPI?</h3>
+<br><br>
+<p>StringAPI is a web api that makes it easy and affordable implement a referral network for your product to grow your client base.</p>
+<br><br>
+<h3>Who would use StringAPI?</h3>
+<br><br>
+<p>Anyone can use our API, but the main use case would be for an app or website that wants to be able to reward customers for referring other users.
+Furthermore, we do not have any flat fee, so if StringAPI does not help your refer any clients, then you owe nothing. This also means that unsubscribing is as
+easy as deleting the api calls from the code!</p>
+<br><br>
+<h3>I am confused! Can you walk me through the process?</h3>
+<br><br>
+<p>Sure. Lets say I have a run tracking app called RunTracker. RunTracker has two tiers: a free tier, where you can only track your runs, and a paid tier,
+  where you can also track your heart rate during your run. Lets say that the paid tier is $5 per month. Lets also assume that 10% of customers sign up for the paid tier.
+If I (the owner of the app) implement in StringAPI, I can use my existing client base to refer others to the site. First, I would use the addUser api call to
+add all existing users to the api database. Then, I would use the getCode call to get the codes of each user and display this on their app homepages. Now, whenever anybody signs up
+for RunTracker, I will have a box that asks if they have been referred to the app, and if so, to put the code that their referer gave them in the form box. Now when I call the
+addUser function for this new user, a "point" will be added to the person that referred the new client, the client, and the person who referred the person who referred the client
+  (second degree referral). Now, when these three people log into the app, I will check how many points they have and if they have a point, I will call the removePoint() function
+and give them a 20 day free trial to the paid tier. Assuming that 10% of the users referred to the app will use the premium tier, every user added will give a net 50 cent per month revenue.
+This easily covers the one time 20 cent cost for adding the user through StringAPI.</p>
+
+<br><br>
+
+<h3>How to get started with us</h3>
+<br><br>
+<p>Simple! 1) Sign up. 2) In the same browser window, open up your email and look for an email from stringapi134@gmail.com. Click on the validation link in the email.
+3) Put credit card info into the stripe checkout page. 4) Log in and create an instance. 5) Start making api calls!</p>
+<br><br>
+<h3>Security</h3>
+<br><br>
+<p>We use HTTPS. We also use Stripe, a secure way of processing payments.</p>
+<br><br>
+<h3>About us</h3>
+<br><br>
+<p>StringAPI was founded in 2020. It was production ready by August of 2021.</p>
+</body>
+</html>
